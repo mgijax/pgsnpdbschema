@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#
+# History
+#
+# 08/23/2003    sc
+#       - TR 1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create unique index SNP_Population_idx_Population_key on snp.SNP_Population (_Population_key);
+
+
+create index SNP_Population_idx_SubHandle_key on snp.SNP_Population (_SubHandle_key);
+ 
+
+create index SNP_Population_idx_name on snp.SNP_Population (name);
+
+
+
+EOSQL

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/27/2005    sc
+#       - TR 1560; SNP 
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create table snp.SNP_SubSnp_StrainAllele (
+        _SubSnp_key                int             not null,
+	_Population_key		   int		   not null,
+	_mgdStrain_key		   int		   not null,
+        allele 	                   varchar(50)     not null
+);
+EOSQL

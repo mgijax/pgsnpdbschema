@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#
+# History
+#
+# 03/01/2006	lec
+#	- TR 7450; new
+#
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+ALTER TABLE snp.SNP_Accession ADD PRIMARY KEY (_Accession_key);
+
+
+EOSQL

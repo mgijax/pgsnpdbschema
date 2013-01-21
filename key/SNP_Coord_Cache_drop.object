@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# History
+#
+# 07/28/2005	sc
+#	- TR 1560; SNP
+#
+cd `dirname $0` && . ./Configuration
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+ALTER TABLE snp.SNP_ConsensusSnp_Marker DROP CONSTRAINT SNP_ConsensusSnp_Marker__Coord_Cache_key_fkey CASCADE;
+ALTER TABLE snp.SNP_Coord_Cache DROP CONSTRAINT SNP_Coord_Cache_pkey CASCADE;
+
+EOSQL

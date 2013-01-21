@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/27/2005    sc
+#       - TR 1560; SNP 
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create table snp.SNP_ConsensusSnp_Marker (
+	_ConsensusSnp_Marker_key   int		   not null,
+        _ConsensusSnp_key          int             not null,
+        _Marker_key                int             not null,
+	_Fxn_key		   int		   not null,
+	_Coord_Cache_key	   int		   not null,
+	contig_allele  		   varchar(50)	   null,
+	residue			   char(1)	   null,
+	aa_position		   int	 	   null,
+        reading_frame		   int		   null
+);
+EOSQL

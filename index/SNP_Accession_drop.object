@@ -1,0 +1,40 @@
+#!/bin/sh
+
+#
+# History
+#
+# 03/01/2006	lec
+#	- TR 7450; new
+#
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+drop index snp.SNP_Accession_idx_Object_key
+;
+
+drop index snp.SNP_Accession_idx_Accession_key
+;
+
+drop index snp.SNP_Accession_idx_Object_MGIType_key
+;
+
+drop index snp.SNP_Accession_idx_LogicalDB_key
+;
+
+drop index snp.SNP_Accession_idx_MGIType_key
+;
+
+drop index snp.SNP_Accession_idx_accID
+;
+
+drop index snp.SNP_Accession_idx_numericPart
+;
+
+drop index snp.SNP_Accession_idx_prefixPart
+;
+
+EOSQL

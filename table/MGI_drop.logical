@@ -1,0 +1,19 @@
+#!/bin/csh -f -x
+
+#
+# Logical Group Script
+#
+# Executes all MGI*_drop.object scripts
+# Excludes MGI_dbinfo
+#
+
+cd `dirname $0`
+
+foreach i (MGI*_drop.object)
+if ( $i != "MGI_dbinfo_drop.object" ) then
+$i $*
+endif
+end
+
+./MGI_dbinfo_drop.object
+

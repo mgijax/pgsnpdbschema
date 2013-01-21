@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# History
+#
+# 07/28/2005	sc
+#	- TR 1560; SNP
+#
+cd `dirname $0` && . ./Configuration
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+ALTER TABLE snp.SNP_ConsensusSnp_StrainAllele DROP CONSTRAINT SNP_ConsensusSnp_StrainAllele_pkey CASCADE;
+
+EOSQL

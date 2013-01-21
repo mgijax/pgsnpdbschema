@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/27/2005    sc
+#       - TR 1560; SNP 
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create table snp.SNP_ConsensusSnp (
+        _ConsensusSnp_key          int             not null,
+        _VarClass_key              int             not null,
+        alleleSummary              varchar(200)    not null,
+	iupacCode		   char(1)	   not null,
+	buildCreated		   varchar(5)	   not null,
+	buildUpdated		   varchar(5)	   not null
+);
+EOSQL

@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# History
+#
+# 03/01/2006	lec
+#	- TR 7450; new
+#
+#
+cd `dirname $0` && . ./Configuration
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+ALTER TABLE snp.SNP_SubSnp_StrainAllele DROP CONSTRAINT SNP_SubSnp_StrainAllele__mgdStrain_key_fkey CASCADE;
+
+ALTER TABLE snp.SNP_ConsensusSnp_StrainAllele DROP CONSTRAINT SNP_ConsensusSnp_StrainAllele__mgdStrain_key_fkey CASCADE;
+ALTER TABLE snp.SNP_Strain DROP CONSTRAINT SNP_Strain_pkey CASCADE;
+
+EOSQL

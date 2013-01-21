@@ -1,0 +1,36 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create view snp.SNP_Summary_View
+as
+select a.*,
+a.accID as mgiID,
+E'\\Term(' || cast(s._VarClass_key as varchar(25)) || ')' as subType,
+0 as private,
+s.alleleSummary as description,
+s.alleleSummary as short_description
+from SNP_Accession a, SNP_ConsensusSnp s
+where a._MGIType_key = 30
+and a._Object_key = s._ConsensusSnp_key
+union
+select a.*,
+a.accID as mgiID,
+E'\\Term(' || cast(s._VarClass_key as varchar(25)) || ')' as subType,
+0 as private,
+'submitted SNP for ' || ssa.accID as description,
+'submitted SNP for ' || ssa.accID as short_description
+from SNP_Accession a, SNP_SubSnp s, SNP_Accession ssa
+where a._MGIType_key = 31
+and a._Object_key = s._SubSnp_key
+and s._ConsensusSnp_key = ssa._Object_key
+and ssa._MGIType_key = 30
+
+
+
+;
+
+EOSQL

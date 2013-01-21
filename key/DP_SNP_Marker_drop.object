@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# History
+#
+# 02/27/2006    sc
+#       - TR7450 SNP database
+#
+cd `dirname $0` && . ./Configuration
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+ALTER TABLE snp.DP_SNP_Marker DROP CONSTRAINT DP_SNP_Marker_pkey CASCADE;
+
+EOSQL

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/28/2005	sc
+#	- TR 1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+ALTER TABLE snp.SNP_ConsensusSnp ADD PRIMARY KEY (_ConsensusSnp_key);
+
+
+ALTER TABLE snp.SNP_SubSnp ADD FOREIGN KEY (_ConsensusSnp_key) REFERENCES snp.SNP_ConsensusSnp ON DELETE CASCADE;
+
+
+ALTER TABLE snp.SNP_Coord_Cache ADD FOREIGN KEY (_ConsensusSnp_key) REFERENCES snp.SNP_ConsensusSnp ON DELETE CASCADE;
+
+
+ALTER TABLE snp.SNP_ConsensusSnp_Marker ADD FOREIGN KEY (_ConsensusSnp_key) REFERENCES snp.SNP_ConsensusSnp ON DELETE CASCADE;
+
+
+ALTER TABLE snp.SNP_ConsensusSnp_StrainAllele ADD FOREIGN KEY (_ConsensusSnp_key) REFERENCES snp.SNP_ConsensusSnp ON DELETE CASCADE;
+
+
+ALTER TABLE snp.SNP_Flank ADD FOREIGN KEY (_ConsensusSnp_key) REFERENCES snp.SNP_ConsensusSnp ON DELETE CASCADE;
+
+
+EOSQL

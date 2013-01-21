@@ -1,0 +1,32 @@
+#!/bin/sh
+
+#
+# History
+#11	lec
+#	- TR10805/add _Organism_key
+#
+# 05/2005	lec
+#	- MPR
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+drop index snp.MRK_Location_Cache_idx_coordinate
+;
+
+drop index snp.MRK_Location_Cache_idx_Marker_key
+;
+
+drop index snp.MRK_Location_Cache_idx_Marker_Type_key
+;
+
+drop index snp.MRK_Location_Cache_idx_Organism_key
+;
+
+drop index snp.MRK_Location_Cache_idx_chromosome_offset
+;
+
+EOSQL

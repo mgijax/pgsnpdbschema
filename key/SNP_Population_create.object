@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#
+# History
+#
+# 08/23/2005	sc
+#	- TR 1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+ALTER TABLE snp.SNP_Population ADD PRIMARY KEY ( _Population_key);
+
+
+ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD FOREIGN KEY (_Population_key) REFERENCES snp.SNP_Population ON DELETE CASCADE;
+
+
+EOSQL

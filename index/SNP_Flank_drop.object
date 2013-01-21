@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/28/2005 sc
+#	TR1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+drop index snp.SNP_Flank_idx_ConsensusSNP_key_seqNum
+;
+
+EOSQL

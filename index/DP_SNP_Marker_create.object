@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#
+# History
+#
+# 02/27/2006    sc
+#       - TR7450 SNP database
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create unique index DP_SNP_Marker_idx_SNPMarker_key on snp.DP_SNP_Marker (_SNPMarker_key);
+
+
+create index DP_SNP_Marker_idx_entrezGeneId on snp.DP_SNP_Marker (entrezGeneId);
+
+
+create index DP_SNP_Marker_idx_fxnClass on snp.DP_SNP_Marker (_Fxn_key);
+
+
+
+EOSQL

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#
+# This table is the MGI Format 
+# SNP to Marker associations
+#
+#
+
+
+# History
+#
+# 02/27/2006    sc
+#       - TR7450 SNP database
+
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create table snp.DP_SNP_Marker (
+	_SNPMarker_key                  int             not null,
+	accID		                varchar(30)     not null,
+	entrezGeneId			varchar(20)	not null,
+        _Fxn_Key			int		not null,
+	chromosome			varchar(20)	not null,
+	startCoord			float		not null,
+	refseqNucleotide		varchar(20)	null,
+	refseqProtein			varchar(20)	null,
+	contig_allele              	varchar(50)     null,
+        residue                    	char(1)         null,
+        aa_position                	int             null,
+        reading_frame              	int             null
+);
+EOSQL

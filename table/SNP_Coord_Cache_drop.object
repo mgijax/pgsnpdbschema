@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/27/2005	sc
+#	- TR 1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+
+drop table snp.SNP_Coord_Cache
+
+CASCADE
+;
+EOSQL

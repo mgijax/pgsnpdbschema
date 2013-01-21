@@ -1,0 +1,16 @@
+#!/bin/csh -f -x
+
+#
+# Logical Group Script
+#
+# Executes all SNP*_create.object scripts
+#
+# Order is important!
+#
+
+cd `dirname $0`
+
+foreach i (SNP*_create.object)
+$i $*
+end
+
