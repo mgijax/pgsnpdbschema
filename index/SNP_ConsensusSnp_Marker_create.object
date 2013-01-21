@@ -12,7 +12,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create unique index SNP_ConsensusSnp_Marker_idx_ConsensusSnp_Marker_key on snp.SNP_ConsensusSnp_Marker (_ConsensusSnp_Marker_key);
+--create unique index SNP_ConsensusSnp_Marker_idx_ConsensusSnp_Marker_key on snp.SNP_ConsensusSnp_Marker (_ConsensusSnp_Marker_key);
 
 
 create index SNP_ConsensusSnp_Marker_idx_Marker_Fxn_CS_key on snp.SNP_ConsensusSnp_Marker (_Marker_key, _Fxn_key, _ConsensusSnp_key);

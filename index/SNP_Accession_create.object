@@ -13,10 +13,11 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create index SNP_Accession_idx_Object_key on snp.SNP_Accession (_Object_key);
-create index SNP_Accession_idx_Accession_key on snp.SNP_Accession (_Object_key);
+--to-be obsoleted
+--create index SNP_Accession_idx_Object_key on snp.SNP_Accession (_Object_key);
+--create index SNP_Accession_idx_Accession_key on snp.SNP_Accession (_Object_key);
 
---create index SNP_Accession_idx_clustered on snp.SNP_Accession (_Object_key);
+create index SNP_Accession_idx_clustered on snp.SNP_Accession (_Object_key);
 
 
 create index SNP_Accession_idx_Object_MGIType_key on snp.SNP_Accession (_Object_key, _MGIType_key);
@@ -36,7 +37,7 @@ create index SNP_Accession_idx_numericPart on snp.SNP_Accession (numericPart);
 
 create index SNP_Accession_idx_prefixPart on snp.SNP_Accession (prefixPart);
 
---CLUSTER snp.SNP_Accession USING SNP_Accession_idx_clustered;
+CLUSTER snp.SNP_Accession USING SNP_Accession_idx_clustered;
 
 
 
