@@ -15,9 +15,6 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 create index SNP_Coord_Cache_idx_chr_startCoord on snp.SNP_Coord_Cache(chromosome, startCoordinate);
 
 
-create unique index SNP_Coord_Cache_idx_cache_CS_key on snp.SNP_Coord_Cache (_Coord_Cache_key, _ConsensusSnp_key);
-
-
 create index SNP_Coord_Cache_idx_ConsensusSnp_key on snp.SNP_Coord_Cache (_ConsensusSnp_key);
 
 

@@ -15,9 +15,6 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 drop index snp.SNP_Coord_Cache_idx_chr_startCoord
 ;
 
-drop index snp.SNP_Coord_Cache_idx_cache_CS_key
-;
-
 drop index snp.SNP_Coord_Cache_idx_ConsensusSnp_key
 ;
 

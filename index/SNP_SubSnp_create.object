@@ -15,9 +15,6 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 create index SNP_SubSnp_idx_ConsensusSnp_key on snp.SNP_SubSnp (_ConsensusSnp_key);
 
 
-create unique index SNP_SubSnp_idx_SubSnp_key on snp.SNP_SubSnp (_SubSnp_key);
- 
-
 create index SNP_SubSnp_idx_VarClass_key on snp.SNP_SubSnp (_VarClass_key);
 
 

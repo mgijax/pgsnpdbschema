@@ -13,10 +13,6 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
---to-be obsoleted
---create index SNP_Accession_idx_Object_key on snp.SNP_Accession (_Object_key);
---create index SNP_Accession_idx_Accession_key on snp.SNP_Accession (_Object_key);
-
 create index SNP_Accession_idx_clustered on snp.SNP_Accession (_Object_key);
 
 
