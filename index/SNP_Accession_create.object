@@ -3,6 +3,10 @@
 #
 # History
 #
+# 01/25/2013	lec
+#	- TR11248/TR10788
+#	- make keys consistant with other postgres schema products
+#
 # 03/01/2006	lec
 #	- TR 7450; new
 #

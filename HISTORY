@@ -4,6 +4,7 @@ DATE: 01/21/2013
 STAFF: lec
 CHANGES:
 1) added index/key/table/view
+2) make keys consistant with other postgres schema products
 
 TAG: snpdbschema-pg-4
 TAG: snpdbschema-pg-3
