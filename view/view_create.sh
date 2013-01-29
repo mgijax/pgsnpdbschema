@@ -9,7 +9,6 @@
 cd `dirname $0` && . ./Configuration
 
 for i in \
-MGI_create.logical \
 SNP_create.logical
 do
 $i $*
