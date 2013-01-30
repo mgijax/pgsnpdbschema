@@ -12,14 +12,12 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create index SNP_ConsensusSnp_StrainAllele_idx_Strain_key on snp.SNP_ConsensusSnp_StrainAllele (_mgdStrain_key);
-
-
-create unique index SNP_ConsensusSnp_StrainAllele_idx_primary on snp.SNP_ConsensusSnp_StrainAllele(_ConsensusSnp_key, _mgdStrain_key);
+create index SNP_ConsensusSnp_StrainAllele_idx_clustered on snp.SNP_ConsensusSnp_StrainAllele (_mgdStrain_key);
 
 
 create index SNP_ConsensusSnp_StrainAllele_idx_ConsensusSnp_key on snp.SNP_ConsensusSnp_StrainAllele(_ConsensusSnp_key);
 
 
+CLUSTER snp.SNP_ConsensusSnp_StrainAllele USING SNP_ConsensusSnp_StrainAllele_idx_clustered;
 
 EOSQL
