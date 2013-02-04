@@ -14,7 +14,7 @@ cd `dirname $0` && . ./Configuration
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 
-truncate table snp.SNP_Strain
+truncate table snp.SNP_Strain CASCADE
 
 ;
 EOSQL
