@@ -7,7 +7,7 @@
 
 cd `dirname $0`
 
-foreach i (table key index view procedure)
+foreach i (table key index)
 cd $i
 foreach j (*_create.csh)
 $j $*
