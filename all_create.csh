@@ -9,7 +9,7 @@ cd `dirname $0`
 
 foreach i (table key index view)
 cd $i
-foreach j (*_create.csh)
+foreach j (*_create.sh)
 $j $*
 end
 cd ..
