@@ -16,6 +16,6 @@ create table snp.SNP_Population (
 	_Population_key		   int		   not null,
 	subHandle		   varchar(20)	   not null,
         _SubHandle_key             int             not null,
-	name			   varchar(20)	   not null
+	name			   varchar(25)	   not null
 );
 EOSQL
