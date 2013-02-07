@@ -12,7 +12,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-ALTER TABLE snp.SNP_SubSnp ADD PRIMARY KEY (_SubSnp_key) ON DELETE CASCADE;
+ALTER TABLE snp.SNP_SubSnp ADD PRIMARY KEY (_SubSnp_key);
 
 
 ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD FOREIGN KEY (_SubSnp_key) REFERENCES snp.SNP_SubSnp ON DELETE CASCADE;
