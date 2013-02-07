@@ -1,30 +1,20 @@
-#!/bin/csh -f -x
+#!/bin/sh
 
 #
 # This file was generated automatically by dbschemaScripts.py -- edit with care.
 #
 
-cd `dirname $0` && source ./Configuration
+cd `dirname $0` && . ./Configuration
 
-cat - <<EOSQL | ${MGI_DBUTILS}/bin/doisql.csh ${DBSERVER} ${DBNAME} $0
 
-use ${DBNAME}
-go
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create table MGI_Tables (
+create table mgd.MGI_Tables (
 	table_name                     varchar(30)     not null,
 	description                    text            null,
 	_LoadedBy_key                  int             null,
-	loaded_date                    datetime        null,
-	creation_date                  datetime        not null,
-	modification_date              datetime        not null 
-)
-on ${DBTABLESEGMENT}
-go
-
-checkpoint
-go
-
-quit
-
+	loaded_date                    timestamp DEFAULT now()        null,
+	creation_date                  timestamp DEFAULT now()        not null,
+	modification_date              timestamp DEFAULT now()        not null 
+);
 EOSQL

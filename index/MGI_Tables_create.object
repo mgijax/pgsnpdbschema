@@ -1,22 +1,15 @@
-#!/bin/csh -f -x
+#!/bin/sh
 
 #
 # This file was generated automatically by dbschemaScripts.py -- edit with care.
 #
 
-cd `dirname $0` && source ./Configuration
+cd `dirname $0` && . ./Configuration
 
-cat - <<EOSQL | ${MGI_DBUTILS}/bin/doisql.csh ${DBSERVER} ${DBNAME} $0
 
-use ${DBNAME}
-go
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create unique clustered index idx_primary on MGI_Tables (table_name) on ${DBCLUSTIDXSEG}
-go
 
-checkpoint
-go
-
-quit
+CLUSTER mgd.MGI_Tables USING MGI_Tables_pkey;
 
 EOSQL
