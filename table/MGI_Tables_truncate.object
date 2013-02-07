@@ -1,0 +1,22 @@
+#!/bin/csh -f -x
+
+#
+# This file was generated automatically by revengineer_schema.py -- edit with care.
+#
+
+cd `dirname $0` && source ./Configuration
+
+cat - <<EOSQL | ${MGI_DBUTILS}/bin/doisql.csh ${DBSERVER} ${DBNAME} $0
+
+use ${DBNAME}
+go
+
+truncate table MGI_Tables
+go
+
+checkpoint
+go
+
+quit
+
+EOSQL

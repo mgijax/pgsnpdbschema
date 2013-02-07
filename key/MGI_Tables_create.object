@@ -1,0 +1,25 @@
+#!/bin/csh -f -x
+
+#
+# This file was generated automatically by dbschemaScripts.py -- edit with care.
+#
+
+cd `dirname $0` && source ./Configuration
+
+cat - <<EOSQL | ${MGI_DBUTILS}/bin/doisql.csh ${DBSERVER} ${DBNAME} $0
+
+use ${DBNAME}
+go
+
+sp_primarykey MGI_Tables, table_name
+go
+
+sp_foreignkey MGI_Columns, MGI_Tables, table_name
+go
+
+checkpoint
+go
+
+quit
+
+EOSQL
