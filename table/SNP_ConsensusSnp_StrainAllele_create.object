@@ -16,6 +16,6 @@ create table snp.SNP_ConsensusSnp_StrainAllele (
         _ConsensusSnp_key          int             not null,
 	_mgdStrain_key		   int		   not null,
         allele 	                   varchar(50)     not null,
-	isConflict		   boolean		   not null
+	isConflict		   int		   not null
 );
 EOSQL

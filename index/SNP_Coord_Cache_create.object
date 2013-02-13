@@ -21,6 +21,6 @@ create index SNP_Coord_Cache_idx_ConsensusSnp_key on snp.SNP_Coord_Cache (_Conse
 create index SNP_Coord_Cache_idx_varClass_key on snp.SNP_Coord_Cache (_varClass_key);
 
 
-CLUSTER snp.SNP_Coord_Cache USING Coord_Cache_idx_clustered;
+CLUSTER snp.SNP_Coord_Cache USING SNP_Coord_Cache_idx_clustered;
 
 EOSQL

@@ -16,6 +16,6 @@ create table snp.SNP_Flank (
         _ConsensusSnp_key          int             not null,
         flank	                   varchar(255)    not null,
 	sequenceNum		   int		   not null,
-	is5Prime		   boolean		   not null
+	is5Prime		   int		   not null
 );
 EOSQL

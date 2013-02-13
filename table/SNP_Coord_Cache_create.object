@@ -18,7 +18,7 @@ create table snp.SNP_Coord_Cache (
 	chromosome		   varchar(8)	   not null,
 	sequenceNum		   int		   not null,
         startCoordinate		   float	   not null,
-	isMultiCoord		   boolean	   not null,
+	isMultiCoord		   int	   	   not null,
 	strand			   char(1)	   not null,
 	_VarClass_key		   int		   not null,
 	alleleSummary		   varchar(200)	   not null,

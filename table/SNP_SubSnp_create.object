@@ -18,7 +18,7 @@ create table snp.SNP_SubSnp (
         _SubHandle_key             int             not null,
         _VarClass_key              int             not null,
         orientation                char(1)         not null,
-	isExemplar		   boolean		   not null,
+	isExemplar		   int		   not null,
 	alleleSummary		   varchar(200)	   not null
 );
 EOSQL
