@@ -12,7 +12,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD PRIMARY KEY (_SubSnp_key, _mgdStrain_key);
+ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD PRIMARY KEY (_SubSnp_key, _mgdStrain_key, _Population_key);
 
 
 EOSQL
