@@ -1,3 +1,9 @@
+TAG: pgsnpdbschema-5-1-7-1
+DATE: 04/09/2014
+STAFF: dbm
+CHANGES:
+1) TR11475: remove -x option from shell scripts
+
 TAG: pgsnpdbschema-5-1-4-1
 TAG: snpdbschema-pg-5
 DATE: 03/06/2013
