@@ -12,10 +12,10 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-drop index snp.DP_SNP_Marker_idx_entrezGeneId
+drop index if exists snp.DP_SNP_Marker_idx_entrezGeneId
 ;
 
-drop index snp.DP_SNP_Marker_idx_fxnClass
+drop index if exists snp.DP_SNP_Marker_idx_fxnClass
 ; 
 
 EOSQL
