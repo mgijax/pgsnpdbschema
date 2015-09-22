@@ -27,7 +27,7 @@ create table snp.DP_SNP_Marker (
 	startCoord			float		not null,
 	refseqNucleotide		varchar(20)	null,
 	refseqProtein			varchar(20)	null,
-	contig_allele              	varchar(50)     null,
+	contig_allele              	text	        null,
         residue                    	varchar(5)      null,
         aa_position                	int             null,
         reading_frame              	int             null
