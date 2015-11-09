@@ -18,4 +18,7 @@ drop index if exists snp.DP_SNP_Marker_idx_entrezGeneId
 drop index if exists snp.DP_SNP_Marker_idx_fxnClass
 ; 
 
+drop index if exists snp.DP_SNP_Marker_idx_accID
+;
+
 EOSQL

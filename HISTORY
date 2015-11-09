@@ -1,10 +1,16 @@
-TAG: pgsnpdbschema-6-0-0-??? (not tagged)
-DATE: 09/22/2015
+TAG: pgsnpdbschema-6-0-1-1
+DATE: 11/09/2015
 STAFF: sc
-CHANGES:
+CHANGES: Project Florida
 1) SNP_ConsensusSnp_StrainAllele.allele and DP_SNP_Marker.contigAllele
    changed from character varying (50) to text
- 
+2) SNP_ConsensusSnp_Marker - added distance_from and distance_direction
+3) removed snp_summary_view and all references to views (this was only view)
+4) updated several scripts to remove reference to view
+ -  all_create, all_drop, Install, reconfig, objectCounter
+5) Added table, keys index for new table SNP_RefSeq_Accession
+6) added accid index on DP_SNP_Marker
+
 TAG: pgsnpdbschema-6-0-0-1
 DATE: 07/28/2015
 STAFF: lec

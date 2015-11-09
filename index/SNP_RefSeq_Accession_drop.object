@@ -1,0 +1,37 @@
+#!/bin/sh
+
+#
+# History
+#
+# 11/03/2015    sc
+#       - T12142 Project Florida; new
+#
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_clustered
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_Object_MGIType_key
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_MGIType_key
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_LogicalDB_key
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_accID
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_numericPart
+;
+
+drop index if exists snp.SNP_RefSeq_Accession_idx_prefixPart
+;
+
+EOSQL

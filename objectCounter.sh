@@ -24,7 +24,3 @@ echo "Keys            `ls *_create.object | wc -l` scripts "
 
 cd ${TOP}/procedure
 echo "Procedures      `ls *_create.object | wc -l` scripts"
-
-cd ${TOP}/view
-echo "Views           `ls *_create.object | wc -l` scripts"
-

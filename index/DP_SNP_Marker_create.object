@@ -17,6 +17,6 @@ create index DP_SNP_Marker_idx_entrezGeneId on snp.DP_SNP_Marker (entrezGeneId);
 
 create index DP_SNP_Marker_idx_fxnClass on snp.DP_SNP_Marker (_Fxn_key);
 
-
+create index DP_SNP_Marker_idx_accID on snp.DP_SNP_Marker (accID);
 
 EOSQL

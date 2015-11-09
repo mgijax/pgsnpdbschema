@@ -3,6 +3,8 @@
 #
 # History
 #
+# 10/21/2015	sc
+#	- Project Florida US31 - added distance_from and distance_direction
 # 07/27/2005    sc
 #       - TR 1560; SNP 
 #
@@ -18,9 +20,11 @@ create table snp.SNP_ConsensusSnp_Marker (
         _Marker_key                int             not null,
 	_Fxn_key		   int		   not null,
 	_Coord_Cache_key	   int		   not null,
-	contig_allele  		   test		   null,
+	contig_allele  		   text		   null,
 	residue			   varchar(5)	   null,
 	aa_position		   int	 	   null,
-        reading_frame		   int		   null
+        reading_frame		   int		   null,
+	distance_from		   int		   not null,
+	distance_direction	   varchar(50)     not null
 );
 EOSQL

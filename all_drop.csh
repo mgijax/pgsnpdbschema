@@ -7,7 +7,7 @@
 
 cd `dirname $0`
 
-foreach i (view procedure trigger index key table)
+foreach i (procedure trigger index key table)
 cd $i
 foreach j (*_drop.csh)
 $j $*

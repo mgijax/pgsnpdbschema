@@ -1,0 +1,40 @@
+#!/bin/sh
+
+#
+# History
+#
+# 11/03/2015    sc
+#       - T12142 Project Florida; new
+#
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+create index SNP_RefSeq_Accession_idx_clustered on snp.SNP_RefSeq_Accession (_Object_key);
+
+
+create index SNP_RefSeq_Accession_idx_Object_MGIType_key on snp.SNP_RefSeq_Accession (_Object_key, _MGIType_key);
+
+
+create index SNP_RefSeq_Accession_idx_MGIType_key on snp.SNP_RefSeq_Accession (_MGIType_key);
+
+
+create index SNP_RefSeq_Accession_idx_LogicalDB_key on snp.SNP_RefSeq_Accession (_LogicalDB_key);
+
+
+create index SNP_RefSeq_Accession_idx_accID on snp.SNP_RefSeq_Accession (accID);
+
+
+create index SNP_RefSeq_Accession_idx_numericPart on snp.SNP_RefSeq_Accession (numericPart);
+
+
+create index SNP_RefSeq_Accession_idx_prefixPart on snp.SNP_RefSeq_Accession (prefixPart);
+
+
+CLUSTER snp.SNP_RefSeq_Accession USING SNP_RefSeq_Accession_idx_clustered;
+
+
+EOSQL
