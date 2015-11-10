@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#
+# History
+#
+# 11/03/2015    sc
+#       - T12142 Project Florida; new
+#
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+
+truncate table snp.SNP_RefSeq_Accession CASCADE
+
+;
+EOSQL
