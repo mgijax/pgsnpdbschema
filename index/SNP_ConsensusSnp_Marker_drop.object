@@ -24,4 +24,6 @@ drop index if exists snp.SNP_ConsensusSnp_Marker_idx_CS_Fxn_Mkr_CoordCache_key
 drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Coord_Cache_key
 ;
 
+drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Transcript_Protein_key
+;
 EOSQL

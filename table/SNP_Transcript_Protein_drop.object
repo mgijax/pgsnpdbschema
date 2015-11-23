@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#
+# History
+#
+# 11/20/2015 - new
+#       - TR 12142 dbSNP 142
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+
+drop table snp.SNP_Transcript_Protein
+
+CASCADE
+;
+EOSQL

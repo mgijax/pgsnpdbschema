@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#
+# History
+#
+# 07/27/2003    sc
+#       - TR 1560; SNP
+#
+
+cd `dirname $0` && . ./Configuration
+
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+
+create index SNP_Transcript_Protein_idx_clustered on snp.SNP_Transcript_Protein (transcriptID, proteinID);
+
+CLUSTER snp.SNP_Transcript_Protein USING SNP_Transcript_Protein_idx_clustered;
+
+EOSQL

@@ -25,6 +25,7 @@ create table snp.SNP_ConsensusSnp_Marker (
 	aa_position		   int	 	   null,
         reading_frame		   int		   null,
 	distance_from		   int		   not null,
-	distance_direction	   varchar(50)     not null
+	distance_direction	   varchar(50)     not null,
+	_Transcript_Protein_key	   int		   null
 );
 EOSQL
