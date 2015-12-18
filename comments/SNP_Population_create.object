@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Population IS 'A record in this table represents a submitter population. A submitter may submit snps from multiple populations. It is an accessionable object';
+
+COMMENT ON COLUMN snp.SNP_Population._Population_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_Population.subHandle IS 'dbSNP submitter handle for the lab that submitted a SubSNP from this population e.g. "ABI" or "WI"';
+
+COMMENT ON COLUMN snp.SNP_Population._SubHandle_key IS 'Foreign key to mgd.VOC_Term_key - same term as "subHandle"';
+
+COMMENT ON COLUMN snp.SNP_Population.name IS 'The population name e.g. "ENSEMBL_Sanger".';
+EOSQL

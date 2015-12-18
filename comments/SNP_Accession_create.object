@@ -1,0 +1,23 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Accession IS 'Master Accession table; stores all accession numbers for a SNP accessionable object.  Each accession number has a prefix (non-numeric) part and a numeric part.  Accession numbers are assigned to a specific object (_Object_key) within a specific data set (_MGIType_key), to a specific logical database (_LogicalDB_key).';
+
+COMMENT ON COLUMN SNP_Accession._Accession_key IS 'Primary key';
+
+COMMENT ON COLUMN SNP_Accession.accID IS 'The full accession number string';
+
+COMMENT ON COLUMN SNP_Accession.prefixPart IS 'The leading non-numerical portion of accID';
+
+COMMENT ON COLUMN SNP_Accession.numericPart IS 'The trailing numerical portion of accID';
+
+COMMENT ON COLUMN SNP_Accession._LogicalDB_key IS 'Foreign key to mgd.ACC_LogicalDB';
+
+COMMENT ON COLUMN SNP_Accession._Object_key IS 'Foreign key to any SNP object defined in mgd.ACC_MGIType';
+
+COMMENT ON COLUMN SNP_Accession._MGIType_key IS 'Foreign key to mgd.ACC_MGIType';
+
+EOSQL

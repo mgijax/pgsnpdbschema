@@ -1,0 +1,21 @@
+
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_ConsensusSnp IS 'A record in this table represents a specific Consensus SNP (RefSNP). It is an accessionable object.';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp._ConsensusSnp_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp._VarClass_key IS 'Foreign key to mgd.VOC_Term; the SNP variation class e.g. "SNP" or "IN-DEL"';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp.alleleSummary IS 'Summary of alleles for this RefSNP e.g.  "A/G/T"';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp.iupacCode IS 'IUPAC code for "alleleSummary" e.g. "A/G/T" maps to IUPAC code "D" ';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp.buildCreated IS 'The dbSNP build this RefSNP originally appeared in';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp.buildUpdated IS 'The last dbSNP build this RefSNP was updated';
+
+EOSQL

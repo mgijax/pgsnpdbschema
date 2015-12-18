@@ -1,15 +1,15 @@
 #!/bin/csh -f
 
 #
-# Script to call all bind and create csh scripts
+# Script to call all create scripts
 # Order is important!
 #
 
 cd `dirname $0`
 
-foreach i (table key index)
+foreach i (table key index comments)
 cd $i
-foreach j (*_create.sh)
+foreach j (*_create.object)
 $j $*
 end
 cd ..

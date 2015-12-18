@@ -28,5 +28,4 @@ create index SNP_ConsensusSnp_Marker_idx_Coord_Cache_key on snp.SNP_ConsensusSnp
 
 create index SNP_ConsensusSnp_Marker_idx_Transcript_Protein_key on snp.SNP_ConsensusSnp_Marker (_Transcript_Protein_key);
 
-
 EOSQL

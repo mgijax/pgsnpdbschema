@@ -23,3 +23,7 @@ create table snp.SNP_Accession (
 	_MGIType_key                   int             not null
 );
 EOSQL
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+SNP_Accession_create.object
+

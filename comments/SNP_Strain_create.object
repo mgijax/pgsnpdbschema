@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Strain IS 'A record in this table represents the strain of a SubSNP allele';
+
+COMMENT ON COLUMN snp.SNP_Strain._snpStrain_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_Strain._mgdStrain_key IS 'mgd.PRB_Strain._Strain_key';
+
+COMMENT ON COLUMN snp.SNP_Strain.strain IS 'mgd.PRB_Strain.strain';
+
+COMMENT ON COLUMN snp.SNP_Strain.sequenceNum IS 'Ordering of the strains in this table for the WI';
+
+EOSQL

@@ -17,10 +17,3 @@ echo "Indexes         `ls *_create.object | wc -l` scripts  (`grep -i '^create i
 
 cd ${TOP}/key
 echo "Keys            `ls *_create.object | wc -l` scripts "
-
-#cd ${TOP}/trigger
-#echo "Triggers        `ls *_create.object | wc -l` scripts"
-#
-
-cd ${TOP}/procedure
-echo "Procedures      `ls *_create.object | wc -l` scripts"

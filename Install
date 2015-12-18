@@ -9,7 +9,7 @@ cd `dirname $0`
 #
 # Create symbolic links.
 #
-for i in table key index
+for i in table key index comments
 do
     cd $i
     rm -rf Configuration logs

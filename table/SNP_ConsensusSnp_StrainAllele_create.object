@@ -19,3 +19,8 @@ create table snp.SNP_ConsensusSnp_StrainAllele (
 	isConflict		   int		   not null
 );
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+SNP_ConsensusSnp_StrainAllele_create.object
+

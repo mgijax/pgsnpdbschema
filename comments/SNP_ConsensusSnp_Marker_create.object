@@ -1,0 +1,34 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_ConsensusSnp_Marker IS 'A record in this table represents a gene to RefSNP association';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._ConsensusSnp_Marker_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Marker_key IS 'Foreign key to mgd.MRK_Marker. The marker associated with this RefSNP';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Fxn_key IS 'Foreign key to mgd.VOC_Term. The Function Class of the coordinate of the RefSNP in the marker';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Coord_Cache_key IS 'Foreign key to SNP_Coord_Cache. The coordinate information for the RefSNP';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.contig_allele IS 'The allele observed for the variation in the contig sequence';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.residue IS 'Abbreviation for the amino acid';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.aa_position IS 'Position of the amino acid';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.reading_frame IS 'Reading frame of the transcript';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.distance_from IS 'The distance the RefSNP coordinate is from the marker start or end coordinate';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.distance_direction IS 'The direction the RefSNP coordinate is located from the marker. e.g. "upstream" or "downstream"';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Transcript_Protein_key  IS 'Foreign key to SNP_Transcript_Protein. The Protein and/or Transcript of the marker';
+ 
+
+EOSQL

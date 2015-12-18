@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Transcript_Protein IS 'A record in this table represents a uniq RefSeq Transcript ID and its optional Protein ID from dbSNP marker associations';
+
+COMMENT ON COLUMN snp.SNP_Transcript_Protein._Transcript_Protein_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_Transcript_Protein.transcriptId IS 'A RefSeq Transcript ID e.g. "NM_001001130"';
+
+COMMENT ON COLUMN snp.SNP_Transcript_Protein.proteinID IS 'A RefSeq Protein ID corresponding to "transcriptId" e.g. "NP_001001130"';
+
+EOSQL

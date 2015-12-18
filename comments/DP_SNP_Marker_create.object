@@ -1,0 +1,33 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.DP_SNP_Marker IS 'A record in this table represents a dbSNP/marker/Function Class/Transcript relationship. It is the staging area for the raw data from dbSNP and is used by snpcacheload to create SNP/Marker relationships in the SNP_ConsensusSnp_Marker table' ;
+
+COMMENT ON COLUMN DP_SNP_Marker._SNPMarker_key IS 'Primary key';
+
+COMMENT ON COLUMN DP_SNP_Marker.accID IS 'The RefSNP (ConsensusSnp) accession number string (excludes "rs")';
+
+COMMENT ON COLUMN DP_SNP_Marker.entrezGeneId IS 'EntrezGene ID for the mouse marker dbSNP associates with "accID"';
+
+COMMENT ON COLUMN DP_SNP_Marker._Fxn_Key IS 'dbSNP Function Class resolved to an MGI vocabulary key. The Function Class of the coordinate of the polymorphism in the marker';
+
+COMMENT ON COLUMN DP_SNP_Marker.chromosome IS 'The chromosome on which the RefSNP is found';
+
+COMMENT ON COLUMN DP_SNP_Marker.startCoord IS 'Genome coordinate of the RefSNP';
+
+COMMENT ON COLUMN DP_SNP_Marker.refseqNucleotide IS 'The RefSeq transcript for the marker represented by "entrezGeneId';
+
+COMMENT ON COLUMN DP_SNP_Marker.refseqProtein IS 'The RefSeq protein for the marker represented by "entrezGeneId"';
+
+COMMENT ON COLUMN DP_SNP_Marker.contig_allele IS 'The allele observed for the variation in the contig sequence';
+
+COMMENT ON COLUMN DP_SNP_Marker.residue IS 'Abbreviation for the amino acid';
+
+COMMENT ON COLUMN DP_SNP_Marker.aa_position IS 'Position of the amino acid';
+
+COMMENT ON COLUMN DP_SNP_Marker.reading_frame IS 'Reading frame of the transcript';
+
+EOSQL

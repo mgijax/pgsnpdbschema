@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Coord_Cache IS 'A record in this table represents the chromosome coordinates for a RefSNP';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache._Coord_Cache_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.chromosome IS 'The chromosome on which the RefSNP is found';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.sequenceNum IS 'The sequence number of the chromosome';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.startCoordinate IS 'The genome coordinate of the RefSNP';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.isMultiCoord IS 'True if this RefSNP had multiple coordinates';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.strand IS 'The orientation (yes this field is misnamed) of the RefSNP sequence to the genome e.g. "r", "f"';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache._VarClass_key IS 'Foreign key to mgd.VOC_Term - a term in the variation class vocabulary e.g. "SNP" or "IN-DEL"';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.alleleSummary IS 'Summary of the SubSNP strain alleles for this RefSNP e.g. "A/G/T"';
+
+COMMENT ON COLUMN snp.SNP_Coord_Cache.iupacCode IS 'IUPAC code for "alleleSummary" e.g. "A/G/T" maps to IUPAC code "D" ';
+
+EOSQL

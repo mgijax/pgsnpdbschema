@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_ConsensusSnp_StrainAllele IS 'A record in this table represents the Strain Allele of a RefSNP';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_StrainAllele._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_StrainAllele._mgdStrain_key IS 'The strain. An mgd.PRB_Strain._Strain_key';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_StrainAllele.allele IS 'The allele';
+
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_StrainAllele.isConflict IS 'True if the allele conflicts with others of this RefSNP''s assays (another SubSNP)';
+
+EOSQL

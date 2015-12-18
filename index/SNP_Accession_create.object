@@ -41,5 +41,4 @@ create index SNP_Accession_idx_numericPart on snp.SNP_Accession (numericPart);
 create index SNP_Accession_idx_prefixPart on snp.SNP_Accession (prefixPart);
 
 
-
 EOSQL

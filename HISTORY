@@ -1,3 +1,17 @@
+TAG: pgsnpdbschema-6-0-1-5
+DATE: 12/17/2015
+STAFF: sc
+CHANGES: Project Florida
+1) snp schema documentation comments directory and scripts
+2) removed MGI_Tables scripts
+3) created all_create_comments.csh
+4) added call to comment script in each table create script
+5) renamed reconfig.csh to reconfig.sh
+6) Install - added linking to Configuration in comments directory
+7) all_create.csh/all_drop.csh - call to *create.sh changed to *create.object 
+8) fix.sh removed
+9) objectCounter.sh - removed trigger and procedure directories
+
 TAG: pgsnpdbschema-6-0-1-4
 DATE: 11/21/2015
 STAFF: sc

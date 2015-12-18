@@ -1,15 +1,15 @@
 #!/bin/csh -f
 
 #
-# Script to call all drop csh scripts
+# Script to call all drop scripts
 # Order is important!
 #
 
 cd `dirname $0`
 
-foreach i (procedure trigger index key table)
+foreach i (index key table)
 cd $i
-foreach j (*_drop.csh)
+foreach j (*_drop.object)
 $j $*
 end
 cd ..

@@ -1,0 +1,23 @@
+
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_SubSnp IS 'A record in this table represents a specific Submitter SNP (SubSNP). It is an accessionable object';
+
+COMMENT ON COLUMN snp.SNP_SubSnp._SubSnp_key IS 'Primary key';
+
+COMMENT ON COLUMN snp.SNP_SubSnp._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
+
+COMMENT ON COLUMN snp.SNP_SubSnp._SubHandle_key IS 'Foreign key to mgd.VOC_Term, the dbSNP Submitter handle e.g. "ABI" or "WI"';
+
+COMMENT ON COLUMN snp.SNP_SubSnp._VarClass_key IS 'Foreign key to mgd.VOC_Term, the SubSNP variation class e.g. "SNP" or "IN-DEL"';
+
+COMMENT ON COLUMN snp.SNP_SubSnp.orientation IS 'Orientation of the SubSNP flanking sequence to the RS flanking sequence e.g. "r", "f"';
+
+COMMENT ON COLUMN snp.SNP_SubSnp.isExemplar IS 'True if this is the SS whose flanking sequence is considered the best';
+
+COMMENT ON COLUMN snp.SNP_SubSnp.alleleSummary IS 'The summary of all alleles for this SubSNP e.g. "A/CT"';
+
+EOSQL

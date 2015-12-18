@@ -18,4 +18,9 @@ create table snp.SNP_Flank (
 	sequenceNum		   int		   not null,
 	is5Prime		   int		   not null
 );
+
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+SNP_Flank_create.object

@@ -19,4 +19,10 @@ create table snp.SNP_Strain (
 	strain                         varchar(255)    not null,
 	sequenceNum                    int             not null
 );
+
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+SNP_Strain_create.object
+

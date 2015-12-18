@@ -33,3 +33,7 @@ create table snp.DP_SNP_Marker (
         reading_frame              	int             null
 );
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+DP_SNP_Marker_create.object

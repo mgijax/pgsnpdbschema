@@ -19,3 +19,7 @@ create table snp.MGI_dbinfo (
 	modification_date              timestamp without time zone DEFAULT now()        not null 
 );
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+MGI_dbinfo_create.object

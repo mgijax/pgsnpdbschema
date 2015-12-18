@@ -18,4 +18,10 @@ create table snp.SNP_Population (
         _SubHandle_key             int             not null,
 	name			   varchar(25)	   not null
 );
+
 EOSQL
+
+# create comments
+cd ${SNP_DBSCHEMADIR}/comments
+SNP_Population_create.object
+

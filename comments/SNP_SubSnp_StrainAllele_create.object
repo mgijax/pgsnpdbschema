@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_SubSnp_StrainAllele IS 'A record in this table represents a Strain Allele of a SubSnp';
+
+COMMENT ON COLUMN snp.SNP_SubSnp_StrainAllele._SubSnp_key IS 'Foreign key to SNP_SubSp';
+
+COMMENT ON COLUMN snp.SNP_SubSnp_StrainAllele._Population_key IS 'Foreign key to SNP_Population e.g. "ABI" or "WI"';
+
+COMMENT ON COLUMN snp.SNP_SubSnp_StrainAllele._mgdStrain_key IS 'The strain. An mgd.PRB_Strain._Strain_key';
+COMMENT ON COLUMN snp.SNP_SubSnp_StrainAllele.allele IS 'The allele';
+
+EOSQL

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+echo "MGD_DBNAME: $MGD_DBNAME"
+echo "PG_DBNAME: $PG_DBNAME"
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.MGI_dbinfo IS 'This table has one and only one record which contains information about the database such as the public version name, the product name, the last time the database was dumped.';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.creation_date IS 'Date record was created';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.lastdump_date IS 'Date of last schema dump';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.modification_date IS 'Date record was last modified';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.product_name IS 'Product name="SNP"';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.public_version IS 'MGI version as seen in WI e.g. MGI6.0.1';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.schema_version IS 'MGD schema version e.g. 6-0-1';
+
+COMMENT ON COLUMN snp.MGI_dbinfo.snp_data_version IS 'dbSNP Build number';
+
+EOSQL

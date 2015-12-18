@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cd `dirname $0` && . ./Configuration
+
+cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
+
+COMMENT ON TABLE snp.SNP_Flank IS 'A record in this table represents a RefSNP''s flanking sequence'; 
+
+COMMENT ON COLUMN snp.SNP_Flank._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
+
+COMMENT ON COLUMN snp.SNP_Flank.flank IS 'The flanking sequence';
+
+COMMENT ON COLUMN snp.SNP_Flank.sequenceNum IS 'Order of the flanking sequence chunks for this given RefSNP';
+
+COMMENT ON COLUMN snp.SNP_Flank.is5prime IS 'true if 5'' flanking sequence; false if 3'' ';
+
+EOSQL
