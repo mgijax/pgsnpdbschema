@@ -4,7 +4,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-COMMENT ON TABLE snp.SNP_Coord_Cache IS 'A record in this table represents the chromosome coordinates for a RefSNP';
+COMMENT ON TABLE snp.SNP_Coord_Cache IS 'A record in this table represents the chromosome coordinates of a single location for a RefSNP.  A RefSNP can have multiple locations';
 
 COMMENT ON COLUMN snp.SNP_Coord_Cache._Coord_Cache_key IS 'Primary key';
 
@@ -12,13 +12,13 @@ COMMENT ON COLUMN snp.SNP_Coord_Cache._ConsensusSnp_key IS 'Foreign key to SNP_C
 
 COMMENT ON COLUMN snp.SNP_Coord_Cache.chromosome IS 'The chromosome on which the RefSNP is found';
 
-COMMENT ON COLUMN snp.SNP_Coord_Cache.sequenceNum IS 'The sequence number of the chromosome';
+COMMENT ON COLUMN snp.SNP_Coord_Cache.sequenceNum IS 'The sequence number of the chromosome (for ordering records)';
 
 COMMENT ON COLUMN snp.SNP_Coord_Cache.startCoordinate IS 'The genome coordinate of the RefSNP';
 
-COMMENT ON COLUMN snp.SNP_Coord_Cache.isMultiCoord IS 'True if this RefSNP had multiple coordinates';
+COMMENT ON COLUMN snp.SNP_Coord_Cache.isMultiCoord IS 'True if this RefSNP has multiple coordinates';
 
-COMMENT ON COLUMN snp.SNP_Coord_Cache.strand IS 'The orientation (yes this field is misnamed) of the RefSNP sequence to the genome e.g. "r", "f"';
+COMMENT ON COLUMN snp.SNP_Coord_Cache.strand IS 'The orientation (yes this field is misnamed) of the RefSNP sequence as defined by dbSNP e.g. "r" (reverse), "f" (forward)';
 
 COMMENT ON COLUMN snp.SNP_Coord_Cache._VarClass_key IS 'Foreign key to mgd.VOC_Term - a term in the variation class vocabulary e.g. "SNP" or "IN-DEL"';
 

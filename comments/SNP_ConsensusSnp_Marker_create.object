@@ -4,7 +4,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-COMMENT ON TABLE snp.SNP_ConsensusSnp_Marker IS 'A record in this table represents a gene to RefSNP association';
+COMMENT ON TABLE snp.SNP_ConsensusSnp_Marker IS 'A record in this table represents a gene to RefSNP association. There is one record for each RefSNP/Marker/Function Class/Transcript/Protein pair/location';
 
 COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._ConsensusSnp_Marker_key IS 'Primary key';
 
@@ -12,17 +12,17 @@ COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._ConsensusSnp_key IS 'Foreign key 
 
 COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Marker_key IS 'Foreign key to mgd.MRK_Marker. The marker associated with this RefSNP';
 
-COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Fxn_key IS 'Foreign key to mgd.VOC_Term. The Function Class of the coordinate of the RefSNP in the marker';
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Fxn_key IS 'Foreign key to mgd.VOC_Term. The Function Class of the coordinate of the RefSNP with respect to the marker (for dbSNP Function Classes, with respect to a specific transcript)';
 
 COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker._Coord_Cache_key IS 'Foreign key to SNP_Coord_Cache. The coordinate information for the RefSNP';
 
-COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.contig_allele IS 'The allele observed for the variation in the contig sequence';
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.contig_allele IS 'The allele observed for the variant in the contig sequence. If function class="Contig-Reference", this is the reference allele by which the variation is defined';
 
-COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.residue IS 'Abbreviation for the amino acid';
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.residue IS 'Abbreviation for the amino acid encoded in the contig sequence (coding SNPs only)';
 
-COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.aa_position IS 'Position of the amino acid';
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.aa_position IS 'Position of the amino acid in the polypeptide sequence from the corresponding protein accession ID (coding SNPs only)';
 
-COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.reading_frame IS 'Reading frame of the transcript';
+COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.reading_frame IS 'The position in the affected codon of the corresponding contig_allele (coding SNPs only).';
 
 COMMENT ON COLUMN snp.SNP_ConsensusSnp_Marker.distance_from IS 'The distance the RefSNP coordinate is from the marker start or end coordinate';
 

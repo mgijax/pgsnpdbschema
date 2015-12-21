@@ -14,10 +14,10 @@ COMMENT ON COLUMN snp.SNP_SubSnp._SubHandle_key IS 'Foreign key to mgd.VOC_Term,
 
 COMMENT ON COLUMN snp.SNP_SubSnp._VarClass_key IS 'Foreign key to mgd.VOC_Term, the SubSNP variation class e.g. "SNP" or "IN-DEL"';
 
-COMMENT ON COLUMN snp.SNP_SubSnp.orientation IS 'Orientation of the SubSNP flanking sequence to the RS flanking sequence e.g. "r", "f"';
+COMMENT ON COLUMN snp.SNP_SubSnp.orientation IS 'Orientation of the SubSNP flanking sequence to the RS flanking sequence e.g. . "r" (reverse), "f" (forward)';
 
-COMMENT ON COLUMN snp.SNP_SubSnp.isExemplar IS 'True if this is the SS whose flanking sequence is considered the best';
+COMMENT ON COLUMN snp.SNP_SubSnp.isExemplar IS 'True if this is the exemplar SubSNP designated by dbSNP. Many RefSNPs have no exemplar SubSNP';
 
-COMMENT ON COLUMN snp.SNP_SubSnp.alleleSummary IS 'The summary of all alleles for this SubSNP e.g. "A/CT"';
+COMMENT ON COLUMN snp.SNP_SubSnp.alleleSummary IS 'The summary of all alleles across all strains for this SubSNP e.g. "A/CT"';
 
 EOSQL

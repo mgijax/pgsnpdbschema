@@ -4,7 +4,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-COMMENT ON TABLE snp.SNP_Accession IS 'Master Accession table; stores all accession numbers for a SNP accessionable object.  Each accession number has a prefix (non-numeric) part and a numeric part.  Accession numbers are assigned to a specific object (_Object_key) within a specific data set (_MGIType_key), to a specific logical database (_LogicalDB_key).';
+COMMENT ON TABLE snp.SNP_Accession IS 'Master Accession table for SNP data; stores all accession numbers for a SNP accessionable object.  Each accession number has a prefix (non-numeric) part and a numeric part.  Accession numbers are assigned to a specific object (_Object_key) within a specific data set (_MGIType_key), to a specific logical database (_LogicalDB_key).';
 
 COMMENT ON COLUMN SNP_Accession._Accession_key IS 'Primary key';
 

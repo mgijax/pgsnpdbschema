@@ -7,7 +7,7 @@ echo "PG_DBNAME: $PG_DBNAME"
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-COMMENT ON TABLE snp.MGI_dbinfo IS 'This table has one and only one record which contains information about the database such as the public version name, the product name, the last time the database was dumped.';
+COMMENT ON TABLE snp.MGI_dbinfo IS 'This table has one and only one record which contains information about the mgd database used in populating the snp tables, such as the public version name, the product name, and includes the last time the database was dumped';
 
 COMMENT ON COLUMN snp.MGI_dbinfo.creation_date IS 'Date record was created';
 

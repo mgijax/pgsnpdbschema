@@ -4,7 +4,7 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-COMMENT ON TABLE snp.SNP_ConsensusSnp_StrainAllele IS 'A record in this table represents the Strain Allele of a RefSNP';
+COMMENT ON TABLE snp.SNP_ConsensusSnp_StrainAllele IS 'A record in this table represents the Strain Allele of a RefSNP. The allele value is a computed consensus from all subSNPs of the RefSNP for the corresponding strain';
 
 COMMENT ON COLUMN snp.SNP_ConsensusSnp_StrainAllele._ConsensusSnp_key IS 'Foreign key to SNP_ConsensusSnp';
 
