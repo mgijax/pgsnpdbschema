@@ -1,3 +1,9 @@
+TAG: pgsnpdbschema-6-0-12-1
+DATE: 08/09/2018
+STAFF: lec
+CHANGES: 
+1) update indexes/remove clusters
+
 TAG: pgsnpdbschema-6-0-4-1
 DATE: 06/16/2016
 STAFF: lec
