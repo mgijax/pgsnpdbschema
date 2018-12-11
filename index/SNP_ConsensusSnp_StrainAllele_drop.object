@@ -12,10 +12,10 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-drop index if exists snp.SNP_ConsensusSnp_StrainAllele_idx_clustered
+drop index if exists snp.SNP_ConsensusSnp_StrainAllele_idx_ConsensusSnp_key
 ;
 
-drop index if exists snp.SNP_ConsensusSnp_StrainAllele_idx_ConsensusSnp_key
+drop index if exists snp.SNP_ConsensusSnp_StrainAllele_idx__mgdstrain_key
 ;
 
 EOSQL
