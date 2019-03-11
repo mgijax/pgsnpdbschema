@@ -16,7 +16,7 @@ create table snp.SNP_SubSnp_StrainAllele (
         _SubSnp_key                int             not null,
 	_Population_key		   int		   not null,
 	_mgdStrain_key		   int		   not null,
-        allele 	                   varchar(50)     not null
+        allele 	                   text		   not null
 );
 
 EOSQL

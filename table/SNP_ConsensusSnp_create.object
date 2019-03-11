@@ -15,10 +15,10 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 create table snp.SNP_ConsensusSnp (
         _ConsensusSnp_key          int             not null,
         _VarClass_key              int             not null,
-        alleleSummary              varchar(200)    not null,
+        alleleSummary              text		   not null,
 	iupacCode		   char(1)	   not null,
-	buildCreated		   varchar(5)	   not null,
-	buildUpdated		   varchar(5)	   not null
+	buildCreated		   text		   not null,
+	buildUpdated		   text		   not null
 );
 EOSQL
 

@@ -20,15 +20,15 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 create table snp.DP_SNP_Marker (
 	_SNPMarker_key                  int             not null,
-	accID		                varchar(30)     not null,
-	entrezGeneId			varchar(20)	not null,
+	accID		                text     	not null,
+	entrezGeneId			text		not null,
         _Fxn_Key			int		not null,
-	chromosome			varchar(20)	not null,
+	chromosome			text		not null,
 	startCoord			float		not null,
-	refseqNucleotide		varchar(20)	null,
-	refseqProtein			varchar(20)	null,
+	refseqNucleotide		text		null,
+	refseqProtein			text	 	null,
 	contig_allele              	text	        null,
-        residue                    	varchar(5)      null,
+        residue                    	text	        null,
         aa_position                	int             null,
         reading_frame              	int             null
 );

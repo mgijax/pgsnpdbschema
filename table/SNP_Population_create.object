@@ -14,9 +14,9 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 create table snp.SNP_Population (
 	_Population_key		   int		   not null,
-	subHandle		   varchar(20)	   not null,
+	subHandle		   text		   not null,
         _SubHandle_key             int             not null,
-	name			   varchar(25)	   not null
+	name			   text		   not null
 );
 
 EOSQL

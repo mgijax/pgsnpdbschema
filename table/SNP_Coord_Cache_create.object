@@ -15,13 +15,13 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 create table snp.SNP_Coord_Cache (
 	_Coord_Cache_key	   int 		   not null, 
         _ConsensusSnp_key          int             not null,
-	chromosome		   varchar(8)	   not null,
+	chromosome		   text		   not null,
 	sequenceNum		   int		   not null,
         startCoordinate		   float	   not null,
 	isMultiCoord		   int	   	   not null,
 	strand			   char(1)	   not null,
 	_VarClass_key		   int		   not null,
-	alleleSummary		   varchar(200)	   not null,
+	alleleSummary		   text		   not null,
         iupacCode	           char(1)	   not null
 );
 

@@ -14,8 +14,8 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 create table snp.SNP_Transcript_Protein (
         _Transcript_Protein_key		int             not null,
-        transcriptID			varchar(30)     not null,
-	proteinID			varchar(30)     null
+        transcriptID			text	        not null,
+	proteinID			text	        null
 );
 
 EOSQL

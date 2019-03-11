@@ -21,11 +21,11 @@ create table snp.SNP_ConsensusSnp_Marker (
 	_Fxn_key		   int		   not null,
 	_Coord_Cache_key	   int		   not null,
 	contig_allele  		   text		   null,
-	residue			   varchar(5)	   null,
+	residue			   text	  	   null,
 	aa_position		   int	 	   null,
         reading_frame		   int		   null,
 	distance_from		   int		   not null,
-	distance_direction	   varchar(50)     not null,
+	distance_direction	   text		   not null,
 	_Transcript_Protein_key	   int		   null
 );
 
