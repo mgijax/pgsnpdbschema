@@ -14,15 +14,14 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 create index SNP_ConsensusSnp_Marker_idx_clustered on snp.SNP_ConsensusSnp_Marker (_ConsensusSnp_key);
 
-
-CLUSTER snp.SNP_ConsensusSnp_Marker USING SNP_ConsensusSnp_Marker_idx_clustered;
-
+create index SNP_ConsensusSnp_Marker_idx_Marker_key on snp.SNP_ConsensusSnp_Marker (_Marker_key);
 
 create index SNP_ConsensusSnp_Marker_idx_Fxn_CS_CoordCache_key on snp.SNP_ConsensusSnp_Marker (_Fxn_key, _ConsensusSnp_key, _Coord_Cache_key);
 
-
 create index SNP_ConsensusSnp_Marker_idx_CS_Fxn_Mkr_CoordCache_key on snp.SNP_ConsensusSnp_Marker (_ConsensusSnp_key, _Fxn_key, _Marker_key, _Coord_Cache_key);
 
+
+create index SNP_ConsensusSnp_Marker_idx_Fxn_key on snp.SNP_ConsensusSnp_Marker (_Fxn_key);
 
 create index SNP_ConsensusSnp_Marker_idx_Coord_Cache_key on snp.SNP_ConsensusSnp_Marker (_Coord_Cache_key);
 
