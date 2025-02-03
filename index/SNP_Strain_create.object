@@ -13,11 +13,8 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create unique index SNP_Strain_idx_clustered on snp.SNP_Strain (_mgdStrain_key);
-
-
-CLUSTER snp.SNP_Strain USING SNP_Strain_idx_clustered;
-
+create unique index SNP_Strain_idx_mgdStrain on snp.SNP_Strain (_mgdStrain_key);
+CLUSTER snp.SNP_Strain USING SNP_Strain_idx_mgdStrain;
 
 create index SNP_Strain_idx_strain on snp.SNP_Strain (strain);
 

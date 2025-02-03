@@ -12,14 +12,9 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create index SNP_SubSnp_idx_clustered on snp.SNP_SubSnp (_ConsensusSnp_key);
-
-
-CLUSTER snp.SNP_SubSnp USING SNP_SubSnp_idx_clustered;
-
+create index SNP_SubSnp_idx_ConsensusSnp_key on snp.SNP_SubSnp (_SubHandle_key);
 
 create index SNP_SubSnp_idx_VarClass_key on snp.SNP_SubSnp (_VarClass_key);
-
 
 create index SNP_SubSnp_idx_SubHandle_key on snp.SNP_SubSnp (_SubHandle_key);
 

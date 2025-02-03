@@ -12,8 +12,6 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create index SNP_ConsensusSnp_idx_ConsensusSnp_key on snp.SNP_ConsensusSnp (_ConsensusSnp_key);
-
 create index SNP_ConsensusSnp_idx_VarClass_key on snp.SNP_ConsensusSnp (_VarClass_key);
 
 EOSQL

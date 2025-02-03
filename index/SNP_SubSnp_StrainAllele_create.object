@@ -12,14 +12,9 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-create index SNP_SubSnp_StrainAllele_idx_clustered on snp.SNP_SubSnp_StrainAllele (_SubSnp_key);
+create index SNP_SubSnp_StrainAllele_idx_SubSnp_key on snp.SNP_SubSnp_StrainAllele(_SubSnp_key);
 
-
-CLUSTER snp.SNP_SubSnp_StrainAllele USING SNP_SubSnp_StrainAllele_idx_clustered;
-
-
-create index SNP_SubSnp_StrainAllele_idx_Strain_key on snp.SNP_SubSnp_StrainAllele(_mgdStrain_key);
-
+create index SNP_SubSnp_StrainAllele_idx_SubSnp_key on snp.SNP_SubSnp_StrainAllele(_mgdStrain_key);
 
 create index SNP_SubSnp_StrainAllele_idx_Population_key on snp.SNP_SubSnp_StrainAllele(_Population_key);
 

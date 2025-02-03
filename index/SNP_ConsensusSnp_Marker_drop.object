@@ -12,16 +12,10 @@ cd `dirname $0` && . ./Configuration
 
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
-drop index if exists snp.SNP_ConsensusSnp_Marker_idx_clustered
+drop index if exists snp.SNP_ConsensusSnp_Marker_idx_ConsensusSnp_key
 ;
 
 drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Marker_key
-;
-
-drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Fxn_CS_CoordCache_key
-;
-
-drop index if exists snp.SNP_ConsensusSnp_Marker_idx_CS_Fxn_Mkr_CoordCache_key
 ;
 
 drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Fxn_key
@@ -32,4 +26,11 @@ drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Coord_Cache_key
 
 drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Transcript_Protein_key
 ;
+
+drop index if exists snp.SNP_ConsensusSnp_Marker_idx_Fxn_CS_CoordCache_key
+;
+
+drop index if exists snp.SNP_ConsensusSnp_Marker_idx_CS_Fxn_Mkr_CoordCache_key
+;
+
 EOSQL
