@@ -14,8 +14,8 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 
 create index SNP_SubSnp_StrainAllele_idx_SubSnp_key on snp.SNP_SubSnp_StrainAllele(_SubSnp_key);
 
-create index SNP_SubSnp_StrainAllele_idx_SubSnp_key on snp.SNP_SubSnp_StrainAllele(_mgdStrain_key);
-
 create index SNP_SubSnp_StrainAllele_idx_Population_key on snp.SNP_SubSnp_StrainAllele(_Population_key);
+
+create index SNP_SubSnp_StrainAllele_idx_MgdStrain_key on snp.SNP_SubSnp_StrainAllele(_mgdStrain_key);
 
 EOSQL
