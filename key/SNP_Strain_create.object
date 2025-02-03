@@ -15,10 +15,11 @@ cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0
 ALTER TABLE snp.SNP_Strain ADD PRIMARY KEY (_snpStrain_key);
 
 
-ALTER TABLE snp.SNP_ConsensusSnp_StrainAllele ADD FOREIGN KEY (_mgdStrain_key) REFERENCES snp.SNP_Strain(_mgdStrain_key) ON DELETE CASCADE;
+-- not necessary
+--ALTER TABLE snp.SNP_ConsensusSnp_StrainAllele ADD FOREIGN KEY (_mgdStrain_key) REFERENCES snp.SNP_Strain(_mgdStrain_key) ON DELETE CASCADE;
 
-
-ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD FOREIGN KEY (_mgdStrain_key) REFERENCES snp.SNP_Strain(_mgdStrain_key) ON DELETE CASCADE;
+-- not necessary
+--ALTER TABLE snp.SNP_SubSnp_StrainAllele ADD FOREIGN KEY (_mgdStrain_key) REFERENCES snp.SNP_Strain(_mgdStrain_key) ON DELETE CASCADE;
 
 
 EOSQL
