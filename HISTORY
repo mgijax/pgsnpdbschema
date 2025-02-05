@@ -1,3 +1,9 @@
+TAG: pgsnpdbschema-6-0-25-?
+DATE: 02/05/2025
+STAFF: lec
+CHANGES:
+e4g-127/Process Alliance File to Load SNP_ConsensusSnp_Marker
+
 TAG: pgsnpdbschema-tr12963-BP
 DATE: 12/10/2018
 STAFF: sc
